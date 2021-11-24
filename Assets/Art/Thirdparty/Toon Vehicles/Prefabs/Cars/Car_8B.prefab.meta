@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6d4907d711d7f40ee9052e2dd6f8fb6a
+labels:
+- cab
+- car
+- sedan
+- taxi
+- transport
+- vehicle
+timeCreated: 1489401181
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

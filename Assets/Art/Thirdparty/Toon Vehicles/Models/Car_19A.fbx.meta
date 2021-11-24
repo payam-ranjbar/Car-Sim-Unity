@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 31bf2e7a578d94b8a89f2c14a42a267e
+timeCreated: 1524270733
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Car_14A.001
+    100002: //RootNode
+    100004: Car_19A
+    100006: Wheel_7E_F.L.001
+    100008: Wheel_7E_F.R.001
+    100010: Wheel_7E_R.L.001
+    100012: Wheel_7E_R.R.001
+    100014: Car_19A.001
+    100016: Car_19A_Spoiler
+    100018: Wheel_19A_F.L
+    100020: Wheel_19A_F.R
+    100022: Wheel_19A_R.L
+    100024: Wheel_19A_R.R
+    100026: Car_19A_Livery
+    100028: Text.004
+    100030: Text.005
+    100032: Text.006
+    400000: Car_14A.001
+    400002: //RootNode
+    400004: Car_19A
+    400006: Wheel_7E_F.L.001
+    400008: Wheel_7E_F.R.001
+    400010: Wheel_7E_R.L.001
+    400012: Wheel_7E_R.R.001
+    400014: Car_19A.001
+    400016: Car_19A_Spoiler
+    400018: Wheel_19A_F.L
+    400020: Wheel_19A_F.R
+    400022: Wheel_19A_R.L
+    400024: Wheel_19A_R.R
+    400026: Car_19A_Livery
+    400028: Text.004
+    400030: Text.005
+    400032: Text.006
+    2300000: Car_14A.001
+    2300002: Car_19A
+    2300004: Wheel_7E_F.L.001
+    2300006: Wheel_7E_F.R.001
+    2300008: Wheel_7E_R.L.001
+    2300010: Wheel_7E_R.R.001
+    2300012: Car_19A.001
+    2300014: //RootNode
+    2300016: Car_19A_Spoiler
+    2300018: Wheel_19A_F.L
+    2300020: Wheel_19A_F.R
+    2300022: Wheel_19A_R.L
+    2300024: Wheel_19A_R.R
+    2300026: Car_19A_Livery
+    2300028: Text.004
+    2300030: Text.005
+    2300032: Text.006
+    3300000: Car_14A.001
+    3300002: Car_19A
+    3300004: Wheel_7E_F.L.001
+    3300006: Wheel_7E_F.R.001
+    3300008: Wheel_7E_R.L.001
+    3300010: Wheel_7E_R.R.001
+    3300012: Car_19A.001
+    3300014: //RootNode
+    3300016: Car_19A_Spoiler
+    3300018: Wheel_19A_F.L
+    3300020: Wheel_19A_F.R
+    3300022: Wheel_19A_R.L
+    3300024: Wheel_19A_R.R
+    3300026: Car_19A_Livery
+    3300028: Text.004
+    3300030: Text.005
+    3300032: Text.006
+    4300000: Car_14A.001
+    4300002: Wheel_7E_R.R.001
+    4300004: Wheel_7E_R.L.001
+    4300006: Wheel_7E_F.R.001
+    4300008: Wheel_7E_F.L.001
+    4300010: Car_19A
+    4300012: Car_19A.001
+    4300014: Car_19A_Spoiler
+    4300016: Wheel_19A_R.R
+    4300018: Wheel_19A_R.L
+    4300020: Wheel_19A_F.R
+    4300022: Wheel_19A_F.L
+    4300024: Car_19A_Livery
+    4300026: Text.006
+    4300028: Text.005
+    4300030: Text.004
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

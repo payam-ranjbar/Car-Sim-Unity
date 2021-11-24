@@ -1,0 +1,26 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl lightBack
+Kd 1 0.3490196 0.227451
+
+newmtl paintGreen
+Kd 0.2392157 0.8470588 0.5058824
+
+newmtl plastic
+Kd 0.3764706 0.3764706 0.3764706
+
+newmtl paintWhite
+Kd 0.8980392 0.9058824 0.9686275
+
+newmtl _defaultMat
+Kd 1 1 1
+
+newmtl lightFront
+Kd 1 0.9762833 0.9292453
+
+newmtl window
+Kd 0.9372549 0.9372549 0.9372549
+
+newmtl carTire
+Kd 0.2392157 0.2392157 0.2392157
+

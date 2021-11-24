@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a0821c4a6f4454f99b2823a3a0eb7941
+labels:
+- car
+- limousine
+- sedan
+- vehicle
+timeCreated: 1489401218
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

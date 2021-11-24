@@ -1,0 +1,11 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl carTire
+Kd 0.2392157 0.2392157 0.2392157
+
+newmtl _defaultMat
+Kd 1 1 1
+
+newmtl plastic
+Kd 0.3764706 0.3764706 0.3764706
+

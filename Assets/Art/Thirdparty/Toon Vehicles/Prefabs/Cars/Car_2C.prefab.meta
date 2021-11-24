@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3164d13de6e4b4548b3de39667895054
+labels:
+- car
+- cargo
+- police
+- transport
+- van
+- vehicle
+timeCreated: 1487861535
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

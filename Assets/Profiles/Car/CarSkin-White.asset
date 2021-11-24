@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237f3565cd924c8a8a53cb26ea04cdf8, type: 3}
+  m_Name: CarSkin-White
+  m_EditorClassIdentifier: 
+  bodyMat: {fileID: 2100000, guid: da7d28dc0e10aa6419182ba48c118b5e, type: 2}
+  glassMat: {fileID: 2100000, guid: 9366e8dc42a277c44bba7c7d41207f4d, type: 2}
+  innerMat: {fileID: 2100000, guid: 5a1550c1d3f833c41b5194417545fba4, type: 2}
+  tierMat: {fileID: 2100000, guid: 5cf16dbe1bbe3254c82f59fc997314d2, type: 2}
+  ringMat: {fileID: 2100000, guid: f7539c3b969ea3d4ba49ae4250b9560b, type: 2}
+  lightFrontMat: {fileID: 2100000, guid: 1718e3c97790b7c47ad00a25c49eb41a, type: 2}
+  lightBackMat: {fileID: 2100000, guid: 71473847bd0799643bc1b1c7feba3d3e, type: 2}
+  shieldMat: {fileID: 2100000, guid: 1d3f4feac3fc0064e8c745b38e21b51a, type: 2}

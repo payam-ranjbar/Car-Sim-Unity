@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: 5c9e243070444461982a0baa4a5469e9
+timeCreated: 1487169563
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Car_4B_Addon
+    100004: Wheel_4B_Addon_F.L
+    100006: Wheel_4B_Addon_F.R
+    100008: Wheel_4B_Addon_R.L
+    100010: Wheel_4B_Addon_R.R
+    100012: Wheel_4B_F.L
+    100014: Wheel_4B_F.R
+    100016: Wheel_4B_R.L
+    100018: Wheel_4B_R.R
+    100020: Car_4B
+    400000: //RootNode
+    400002: Car_4B_Addon
+    400004: Wheel_4B_Addon_F.L
+    400006: Wheel_4B_Addon_F.R
+    400008: Wheel_4B_Addon_R.L
+    400010: Wheel_4B_Addon_R.R
+    400012: Wheel_4B_F.L
+    400014: Wheel_4B_F.R
+    400016: Wheel_4B_R.L
+    400018: Wheel_4B_R.R
+    400020: Car_4B
+    2300000: //RootNode
+    2300002: Car_4B_Addon
+    2300004: Wheel_4B_Addon_F.L
+    2300006: Wheel_4B_Addon_F.R
+    2300008: Wheel_4B_Addon_R.L
+    2300010: Wheel_4B_Addon_R.R
+    2300012: Wheel_4B_F.L
+    2300014: Wheel_4B_F.R
+    2300016: Wheel_4B_R.L
+    2300018: Wheel_4B_R.R
+    2300020: Car_4B
+    3300000: //RootNode
+    3300002: Car_4B_Addon
+    3300004: Wheel_4B_Addon_F.L
+    3300006: Wheel_4B_Addon_F.R
+    3300008: Wheel_4B_Addon_R.L
+    3300010: Wheel_4B_Addon_R.R
+    3300012: Wheel_4B_F.L
+    3300014: Wheel_4B_F.R
+    3300016: Wheel_4B_R.L
+    3300018: Wheel_4B_R.R
+    3300020: Car_4B
+    4300000: Car_4B
+    4300002: Car_4B_Addon
+    4300004: Wheel_4B_Addon_F.R
+    4300006: Wheel_4B_Addon_F.L
+    4300008: Wheel_4B_Addon_R.L
+    4300010: Wheel_4B_Addon_R.R
+    4300012: Wheel_4B_R.L
+    4300014: Wheel_4B_F.L
+    4300016: Wheel_4B_F.R
+    4300018: Wheel_4B_R.R
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

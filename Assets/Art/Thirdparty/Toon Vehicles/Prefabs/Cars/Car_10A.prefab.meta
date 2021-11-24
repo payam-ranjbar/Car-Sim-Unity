@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: afe89e60e06fe43e6b558ab480dbc64c
+labels:
+- car
+- cargo
+- pick-up
+- transport
+- truck
+- vehicle
+timeCreated: 1489401503
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

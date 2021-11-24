@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1e4f26ccc3ade456e876d2cc14e869fb
+labels:
+- car
+- cargo
+- cistern
+- semi
+- transport
+- truck
+- vehicle
+timeCreated: 1489399980
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

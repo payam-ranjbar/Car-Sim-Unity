@@ -1,0 +1,11 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl paintYellow
+Kd 0.9764706 0.7686275 0.2745098
+
+newmtl carTire
+Kd 0.2392157 0.2392157 0.2392157
+
+newmtl plastic
+Kd 0.3764706 0.3764706 0.3764706
+
