@@ -16,11 +16,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speedLimitForBumps: 9
-  maxSteerAngle: 45
-  turnSpeed: 9
+  maxSteerAngle: 50
+  turnSpeed: 6
   maxMotorTorque: 1264
   maxBrakeTorque: 1000
   currentSpeed: 60
   maxSpeed: 131.7
-  timeBrake: 0.2
-  brakeTorque: 10000
+  timeBrake: 0.5
+  brakeTorque: 1000

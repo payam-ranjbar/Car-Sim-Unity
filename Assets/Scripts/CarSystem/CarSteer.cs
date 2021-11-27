@@ -15,14 +15,19 @@ namespace CarSystem
         [SerializeField] private Transform leftSensor;
         [SerializeField] private Transform rightSensor;
         [SerializeField] private float sensorLength;
+        [SerializeField] private float sensorCenterLength;
+        [SerializeField] private float angleSensorLength;
         [SerializeField] private float sensorAngle;
 
         [SerializeField] private float middleSensorOffset = 1f;
         [SerializeField] private bool drawDebug;
         [SerializeField] private bool avoidObstacles;
 
+        private float _length;
+        public event Action<float> onDetect;
 
         private CarWheels _wheels;
+
 
         private bool _avoiding;
         private float _avoidMultiplier;
@@ -31,6 +36,24 @@ namespace CarSystem
         public Vector3 Destination
         {
             set => _destination = value; 
+        }
+
+        private void Start()
+        {
+            _shortBrakeTime = engineProperties.timeBrake;
+        }
+
+        public void Look()
+        {
+            _avoiding = false;
+            _avoidMultiplier = 0f;
+            engineProperties.timeBrake = _shortBrakeTime;
+
+            CenterRight();
+            Right();
+            CenterLeft();
+            Left();
+            Center();
         }
 
         private void OnGUI()
@@ -42,53 +65,41 @@ namespace CarSystem
             GUILayout.Label(_avoidMultiplier.ToString(), style);
 
         }
-        public void Look()
-        {
-            _avoiding = false;
-            _avoidMultiplier = 0f;
-            Center();
-            CenterLeft();
-            CenterRight();
-            Left();
-            Right();
-        }
 
         public void SetWheels(CarWheels wheels) => _wheels = wheels;
 
         private void OnDrawGizmos()
         {
             if (!drawDebug) return;
-            if (middleSensor != null)
-            {
-
-                
-                Gizmos.color = Color.red;
-
-                Gizmos.DrawLine(middleSensor.position ,middleSensor.position  + middleSensor.forward * sensorLength);
-                var start = middleSensor.position.GetWithX(middleSensor.position.x + middleSensorOffset);
-                Gizmos.DrawLine( start ,start +middleSensor.forward * sensorLength);
-                start = middleSensor.position.GetWithX(middleSensor.position.x - middleSensorOffset);
-                Gizmos.DrawLine(start ,start +middleSensor.forward * sensorLength);
-                var dir = Quaternion.AngleAxis(sensorAngle, transform.up) * rightSensor.forward;
-                Gizmos.DrawLine(rightSensor.position  ,rightSensor.position  + dir * sensorLength);
-                dir = Quaternion.AngleAxis(-sensorAngle, transform.up) * leftSensor.forward;
-                Gizmos.DrawLine(leftSensor.position  ,leftSensor.position  + dir * sensorLength);
-
-            }
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(middleSensor.position ,middleSensor.position  + middleSensor.forward * sensorCenterLength);
+            var start = middleSensor.position.GetWithX(middleSensor.position.x + middleSensorOffset);
+            Gizmos.DrawLine( start ,start + middleSensor.forward * sensorLength);
+            start = middleSensor.position.GetWithX(middleSensor.position.x - middleSensorOffset);
+            Gizmos.DrawLine(start ,start +middleSensor.forward * sensorLength);
+            var dir = Quaternion.AngleAxis(sensorAngle, transform.up) * rightSensor.forward;
+            Gizmos.DrawLine(rightSensor.position  ,rightSensor.position  + dir * angleSensorLength);
+            dir = Quaternion.AngleAxis(-sensorAngle, transform.up) * leftSensor.forward;
+            Gizmos.DrawLine(leftSensor.position  ,leftSensor.position  + dir * angleSensorLength);
         }
 
+        private RaycastHit _hit;
         private void ShootRay(Vector3 start, Vector3 direction, Action< RaycastHit> action)
         {
-            var detected = Physics.Raycast(start, direction, out var hit, sensorLength, engineProperties.AvoidingLayers);
+            var detected =
+                Physics.Raycast(start, direction, out _hit, _length, engineProperties.AvoidingLayers);
             if (!detected) return;
-            action?.Invoke (hit);
-            if(drawDebug)
-                Debug.DrawLine(middleSensor.position , hit.point, Color.green);
 
+            action?.Invoke (_hit);
+            onDetect?.Invoke(_avoidMultiplier);
+
+            if(drawDebug)
+                Debug.DrawLine(start, start+ direction* _length, Color.green);
         }
 
         private Vector3 _look;
         private float _targetSteerAngle;
+        private float _shortBrakeTime;
 
         public void Steer()
         {
@@ -125,6 +136,8 @@ namespace CarSystem
 
         private void Right()
         {
+            _length = angleSensorLength;
+
             var dir = Quaternion.AngleAxis(sensorAngle, rightSensor.up) * rightSensor.forward;
             var start = rightSensor.position;
             ShootRay(start, dir, (hit) =>
@@ -138,6 +151,7 @@ namespace CarSystem
         {
             var dir = Quaternion.AngleAxis(-sensorAngle, leftSensor.up) * leftSensor.forward;
             var start = leftSensor.position;
+            _length = angleSensorLength;
             ShootRay(start, dir, (hit) => {
 
                 SetAvoiding(_avoidMultiplier + 0.5f);
@@ -148,7 +162,10 @@ namespace CarSystem
         private void CenterRight()
         {
             var dir = middleSensor.forward;
-            var start = middleSensor.position + middleSensor.position.GetWithX(middleSensor.position.x + middleSensorOffset);
+            var start = middleSensor.position;
+            _length = sensorLength;
+
+            start += middleSensor.right * middleSensorOffset;        
             ShootRay(start, dir, (hit) =>
             {
                 SetAvoiding(_avoidMultiplier - 1f);
@@ -158,7 +175,10 @@ namespace CarSystem
         private void CenterLeft()
         {
             var dir = middleSensor.forward;
-            var start = middleSensor.position  + middleSensor.position.GetWithX(middleSensor.position.x - middleSensorOffset);
+            var start = middleSensor.position;
+            _length = sensorLength;
+
+            start -= middleSensor.right * middleSensorOffset;     
             ShootRay(start, dir, (hit) =>
             {
                 SetAvoiding(_avoidMultiplier + 1f);
@@ -169,9 +189,10 @@ namespace CarSystem
 
         private void Center()
         {
-            
+            _length = sensorCenterLength;
+
             var dir = middleSensor.forward;
-            var start = middleSensor.position  + middleSensor.position.GetWithX(middleSensor.position.x + middleSensorOffset);
+            var start = middleSensor.position;
             ShootRay(start, dir, (hit) =>
             {
                 if (hit.normal.x < 0) 

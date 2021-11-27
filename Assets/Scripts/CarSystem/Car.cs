@@ -8,6 +8,8 @@ namespace CarSystem
 {
     public class Car : MonoBehaviour
     {
+        [SerializeField] private CarEngineProperties engineProperties;
+
         [SerializeField] private CarSteer steerSensor;
         [SerializeField] private CarEngine engine;
         [SerializeField] private CarSkin carSkin;
@@ -26,6 +28,7 @@ namespace CarSystem
         private Collider[] _colliderBuffers;
         public CarSkinProperties Skin { get => carSkin.Skin; set => carSkin.Skin = value; }
         
+        private float _shortBrakeTime;
 
         private void Start()
         {
@@ -34,8 +37,24 @@ namespace CarSystem
             engine.SetWheels(wheels);
             steerSensor.SetWheels(wheels);
             _colliderBuffers = new Collider[20];
+            _shortBrakeTime = engineProperties.timeBrake;
         }
 
+        private void OnEnable()
+        {
+            
+            steerSensor.onDetect += ShortBrake;
+        }
+
+        private void ShortBrake(float avoidance)
+        {
+            engine.ShortBrake();
+        }
+
+        private void OnDisable()
+        {
+            steerSensor.onDetect -= ShortBrake;
+        }
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
@@ -45,17 +64,19 @@ namespace CarSystem
 
         private void Update()
         {
+
+            CheckWayPointDistance();
             SensorLook();
+            steerSensor.Steer();
+            steerSensor.LerpToSteerAngle();
+
         }
 
         private void FixedUpdate()
         {
 
-            steerSensor.Steer();
             engine.Drive();
-            CheckWayPointDistance();
             engine.Braking();
-            steerSensor.LerpToSteerAngle();
         }
 
         private void SensorLook()
