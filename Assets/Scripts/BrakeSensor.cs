@@ -1,8 +1,9 @@
 ﻿using System;
 using CarAI;
+using CarSystem;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace CarDemo
 {
     public class BrakeSensor : MonoBehaviour
     {

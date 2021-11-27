@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace CarDemo
 {
     public class Initializer : MonoBehaviour
     {

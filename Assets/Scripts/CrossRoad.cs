@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Traffic;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace CarDemo
 {
     public class CrossRoad : MonoBehaviour
     {

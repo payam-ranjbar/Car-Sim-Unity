@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace CarDemo
 {
     public class LobbyManager : MonoBehaviour
     {

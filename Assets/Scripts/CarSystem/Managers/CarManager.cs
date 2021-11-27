@@ -1,6 +1,7 @@
 ﻿using System;
 using CarAI;
 using GameGlobals;
+using Traffic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -36,7 +37,8 @@ namespace CarSystem.Managers
         {
             for (int i = 0; i < trackingCars.Length; i++)
             {
-                trackingCars[i].Skin = GetRandomSkin();
+                // trackingCars[i].Skin = GetRandomSkin();
+                Debug.Log("Nothing is happening yet");
             }
         }
 

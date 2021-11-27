@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace CarEditor
 {
-    [CustomEditor(typeof(CarAI.Path))]
+    [CustomEditor(typeof(Path))]
     public class CarEngineEditor : Editor
     {
         public override void OnInspectorGUI()

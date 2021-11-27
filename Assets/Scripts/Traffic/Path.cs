@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using CarAI;
-using Traffic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace CarAI
+namespace Traffic
 {
-    public class Path : MonoBehaviour {
+    public class Path : MonoBehaviour 
+    {
 
         public Color lineColor;
-        public bool Circuit;
+        public bool circuit;
         public bool drawInScene;
         public bool useWaypoint;
         [HideInInspector]
@@ -18,7 +16,8 @@ namespace CarAI
 
         [SerializeField]  Waypoint[] _waypoints;
 
-        
+        public Transform this[int index] => nodes[index];
+
         private string baseNameOfNodes;
 
         public bool UseWaypoint => useWaypoint;
@@ -95,7 +94,7 @@ namespace CarAI
 
 
                 } else if(i == 0 && nodes.Count > 1) {
-                    if (Circuit)
+                    if (circuit)
                     {
                         previousNode = nodes[nodes.Count - 1].position;
                         Gizmos.DrawLine(previousNode, nodes[0].position); 
