@@ -1829,6 +1829,22 @@ PrefabInstance:
       propertyPath: path
       value: 
       objectReference: {fileID: 775094982}
+    - target: {fileID: 5969367863809170876, guid: 04483cf2ca098824c832ff427aa11a0e, type: 3}
+      propertyPath: shpereRadius
+      value: 9.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969367863809170876, guid: 04483cf2ca098824c832ff427aa11a0e, type: 3}
+      propertyPath: centerOfShpere.x
+      value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969367863809170876, guid: 04483cf2ca098824c832ff427aa11a0e, type: 3}
+      propertyPath: centerOfShpere.y
+      value: 2.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969367863809170876, guid: 04483cf2ca098824c832ff427aa11a0e, type: 3}
+      propertyPath: centerOfShpere.z
+      value: -9.73
+      objectReference: {fileID: 0}
     - target: {fileID: 5969367863809170878, guid: 04483cf2ca098824c832ff427aa11a0e, type: 3}
       propertyPath: m_Name
       value: Car Agent

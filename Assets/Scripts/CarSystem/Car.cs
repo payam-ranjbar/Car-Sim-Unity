@@ -18,92 +18,53 @@ namespace CarSystem
         [SerializeField] private int startNode;
         [SerializeField] private float detectionRadius = 5f;
 
-        [SerializeField] private Vector3 center;
-        [SerializeField] private Vector3 center2;
-        [SerializeField] private float capRadius = 1f;
+        [SerializeField] private Vector3 centerOfShpere;
+        [SerializeField] private float shpereRadius = 1f;
         [SerializeField] private LayerMask mask;
         
         private int _currectNode;
+        private Collider[] _colliderBuffers;
         public CarSkinProperties Skin { get => carSkin.Skin; set => carSkin.Skin = value; }
-        private void OnGUI()
-        {
-            var style = new GUIStyle();
-            style.fontSize = 20;
-            
-            GUILayout.Label(_currectNode.ToString(), style);
+        
 
-        }
         private void Start()
         {
             engine.Destination = path[startNode].position;
             steerSensor.Destination = path[startNode].position;
             engine.SetWheels(wheels);
             steerSensor.SetWheels(wheels);
-            _colliders = new Collider[20];
-            // StartCoroutine(SensorUpdate());
+            _colliderBuffers = new Collider[20];
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, transform.position + transform.forward * detectionRadius);
-            Gizmos.DrawWireSphere(transform.position + center, capRadius);
+            Gizmos.DrawWireSphere(transform.position + centerOfShpere, shpereRadius);
         }
 
-        private int _frames;
-        [SerializeField] private int howManyFrames = 10;
-        private Collider[] _colliders;
-
-        IEnumerator SensorUpdate()
-        {
-            while (true)
-            {
-                if (_frames < howManyFrames)
-                {
-                    _frames++;
-                    yield return null;
-                    continue;
-                } 
-                if (Physics.OverlapSphereNonAlloc(
-                    transform.position + center, capRadius, _colliders, mask) > 0)
-                {
-                    steerSensor.Look();
-                }
-                _frames = 0;
-                yield return null;
-
-            }
-        }
         private void Update()
         {
-            // steerSensor.Look();
-            // steerSensor.Steer();
-            // CheckWayPointDistance();
-            if (useCast)
-            {
-                if (Physics.OverlapSphereNonAlloc(
-                    transform.position + center, capRadius, _colliders, mask) > 0)
-                {
-                    steerSensor.Look();
-                }
-            }
-            else
-            {
-                steerSensor.Look();
-            
-            }
+            SensorLook();
         }
 
-        public bool useCast;
         private void FixedUpdate()
         {
-            // engine.RunEngine();
 
             steerSensor.Steer();
             engine.Drive();
             CheckWayPointDistance();
             engine.Braking();
             steerSensor.LerpToSteerAngle();
+        }
+
+        private void SensorLook()
+        {
+            if (Physics.OverlapSphereNonAlloc(
+                transform.position + centerOfShpere, shpereRadius, _colliderBuffers, mask) > 0)
+            {
+                steerSensor.Look();
+            }
         }
 
 
