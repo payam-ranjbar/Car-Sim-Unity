@@ -1,18 +1,20 @@
-using System;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Traffic
+namespace Navigation
 {
     public class Waypoint : MonoBehaviour
     {
         [SerializeField] [Range(0f, 2f)] private float rightOffset;
         [SerializeField] [Range(0f, 2f)] private float leftOffset;
 
+        
         [SerializeField] private Vector3 tangentOffset;
         [SerializeField] private bool useWings;
+        
+        
         [SerializeField]  [HideInInspector]private bool xAxis = true;
+        public Color DrawColor { get; set; }
         public float RightOffset => rightOffset;
 
         public float LeftOffset => leftOffset;
@@ -55,9 +57,34 @@ namespace Traffic
 
         private void OnDrawGizmos()
         {
+            Gizmos.color = DrawColor;   
+            Gizmos.DrawSphere(transform.position, 0.1f);
+            
+            Gizmos.color = Color.yellow;
+            
+            Gizmos.DrawSphere(TangentOffset, 0.1f);
+            Gizmos.DrawLine(transform.position, TangentOffset);
 
-            // var pos = Handles.PositionHandle(TangentOffset, Quaternion.identity);
-            // tangentOffset = pos - transform.position;
+            if (useWings)
+            {
+                var currentNode = transform.position;
+                if (XAxis)
+                {
+                    var right = new Vector3(currentNode.x + RightOffset, currentNode.y, currentNode.z);
+                    Gizmos.DrawLine(currentNode, right);
+                    var left = new Vector3(currentNode.x - LeftOffset, currentNode.y, currentNode.z);
+                    Gizmos.DrawLine(currentNode, left);
+
+
+                }
+                else
+                {
+                    var right = new Vector3(currentNode.x, currentNode.y, currentNode.z + RightOffset);
+                    Gizmos.DrawLine(currentNode, right);
+                    var left = new Vector3(currentNode.x, currentNode.y, currentNode.z - LeftOffset);
+                    Gizmos.DrawLine(currentNode, left);
+                }
+            }
 
 
         }
