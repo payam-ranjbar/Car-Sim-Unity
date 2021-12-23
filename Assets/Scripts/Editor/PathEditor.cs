@@ -1,4 +1,6 @@
-﻿using CarAI;
+﻿using System;
+using CarAI;
+using Navigation;
 using Traffic;
 using UnityEngine;
 using UnityEditor;
@@ -6,7 +8,7 @@ using UnityEditor;
 namespace CarEditor
 {
     [CustomEditor(typeof(Path))]
-    public class CarEngineEditor : Editor
+    public class CarEngineEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -31,15 +33,12 @@ namespace CarEditor
         private void RotateNodes()
         {
             var t = target as Path;
-            if (t.UseWaypoint)
+            for (int i = t.nodes.Count - 1; i >= 0; i--)
             {
-                for (int i = t.nodes.Count - 1; i >= 0; i--)
-                {
-                    t.nodes[i].GetComponent<Waypoint>().RotatePolarity();
-                }
+                t.nodes[i].GetComponent<Waypoint>()?.RotatePolarity();
             }
 
-            
+
         }
 
 
@@ -52,6 +51,8 @@ namespace CarEditor
                 t.nodes[i].transform.SetSiblingIndex(index++);
             }
         }
+
+       
     }
 
 

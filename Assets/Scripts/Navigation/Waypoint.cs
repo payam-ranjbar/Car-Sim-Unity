@@ -1,4 +1,7 @@
+using System;
+using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Traffic
 {
@@ -7,13 +10,21 @@ namespace Traffic
         [SerializeField] [Range(0f, 2f)] private float rightOffset;
         [SerializeField] [Range(0f, 2f)] private float leftOffset;
 
-        
+        [SerializeField] private Vector3 tangentOffset;
+        [SerializeField] private bool useWings;
         [SerializeField]  [HideInInspector]private bool xAxis = true;
         public float RightOffset => rightOffset;
 
         public float LeftOffset => leftOffset;
 
+        public Vector3 TangentOffset
+        {
+            get => tangentOffset + transform.position;
+            set => tangentOffset = value;
+        }
+
         private Vector3 recentPos;
+        
 
         public bool XAxis => xAxis;
 
@@ -26,6 +37,7 @@ namespace Traffic
 
         private Vector3 GetPosition()
         {
+            if (!useWings) return transform.position;
             if (xAxis)
             {
                 var x = transform.position.x + Random.Range(-leftOffset, rightOffset);
@@ -39,6 +51,15 @@ namespace Traffic
 
                 return new Vector3(transform.position.x, transform.localPosition.y, z);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+
+            // var pos = Handles.PositionHandle(TangentOffset, Quaternion.identity);
+            // tangentOffset = pos - transform.position;
+
+
         }
     }
 }

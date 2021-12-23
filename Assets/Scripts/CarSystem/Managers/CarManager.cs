@@ -1,6 +1,7 @@
 ﻿using System;
 using CarAI;
 using GameGlobals;
+using Navigation;
 using Traffic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -96,7 +97,7 @@ namespace CarSystem.Managers
         {
             foreach (var path in paths)
             {
-                path.useWaypoint = gameProperties.useWaypointOffset;
+                // path.useWaypoint = gameProperties.useWaypointOffset;
             }
         }
 

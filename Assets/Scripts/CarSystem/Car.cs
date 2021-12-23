@@ -2,7 +2,7 @@
 using System.Collections;
 using DG.Tweening.Plugins.Core.PathCore;
 using UnityEngine;
-using Path = Traffic.Path;
+using Path = Navigation.Path;
 
 namespace CarSystem
 {

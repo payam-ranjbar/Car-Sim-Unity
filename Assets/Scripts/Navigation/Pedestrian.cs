@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using CarAI;
 using DG.Tweening;
+using Traffic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Traffic
+namespace Navigation
 {
     public class Pedestrian : MonoBehaviour
     {
