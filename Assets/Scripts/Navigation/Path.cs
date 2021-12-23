@@ -13,51 +13,61 @@ namespace Navigation
         public bool circuit;
         public bool drawInScene;
         [Range(5f, 20f)] public float bezierStep = 10f;
-        [HideInInspector]
-        public List<Transform> nodes = new List<Transform>();
 
         [SerializeField]  Waypoint[] _waypoints;
 
-        public Transform this[int index] => nodes[index];
+        private Vector3[] _bakedNodes;
+        
+        public Vector3 this[int index] => _bakedNodes[index];
 
         private string baseNameOfNodes;
         [SerializeField] private bool useBezier;
 
-        public int NodeCount => nodes.Count;
+        public int NodeCount => _bakedNodes.Length;
         public Waypoint[] Waypoints => _waypoints;
         
-
-        public Vector3 GetPosition(int index)
+        private void Awake()
         {
-            return _waypoints[index].Position;
-        }
-
-        private void Start()
-        {
-            BuildNodeList();
             BuildWaypoints();
+            BuildBakedPositions();
         }
 
-        private void RenameNodes()
+        [ContextMenu("Bake")]
+        private void BuildBakedPositions()
         {
-            for (int i = 0; i < nodes.Count; i++)
+            var list = new List<Vector3>();
+            for (var index = 0; index < _waypoints.Length; index++)
             {
-                var number = i;
-                if (nodes[i] != null)
-                    nodes[i].gameObject.name = baseNameOfNodes + " " + number;
+                if(index + 1 >= _waypoints.Length) continue;
+                for (float t = 0f; t < 100f; t += bezierStep)
+                {
+                    var point = GetBezierPointsBetween(index, index + 1, t/100f);
+                    list.Add(point);
+                }
             }
-            
-            BuildWaypoints();
 
+            _bakedNodes = list.ToArray();
         }
 
+
+
+        
         
 #if UNITY_EDITOR
 
+        private void RenameNodes()
+        {
+            BuildWaypoints();
+            for (int i = 0; i < _waypoints.Length; i++)
+            {
+                var number = i;
+                if (_waypoints[i] != null)
+                    _waypoints[i].gameObject.name = baseNameOfNodes + " " + number;
+            }
+        }
         private void OnDrawGizmosSelected()
         {
             RenameNodes();
-            BuildNodeList();
             BuildWaypoints();
         }
 
@@ -66,9 +76,7 @@ namespace Navigation
             if(!drawInScene) return;
 
             Gizmos.color = lineColor;
-
-            if(nodes is null)
-                BuildNodeList();
+            
 
             if(Waypoints is null)
                 BuildWaypoints();
@@ -94,6 +102,7 @@ namespace Navigation
             var point = Mathf.Pow(1f-t,3f)*startPoint+3f*Mathf.Pow(1f-t,2f)*t*handle1+3f*(1f-t)*Mathf.Pow(t,2f)*handle2+Mathf.Pow(t,3f)*endPoint;
             return point;
         }
+
         private void DrawNodesCurvy()    
         {
             for (var i = 0; i < _waypoints.Length; i++)
@@ -125,31 +134,44 @@ namespace Navigation
             }
         }
 
+        private void BuildWaypoints()
+        {
+            var nodes = GetComponentsInChildren<Transform>();
+            _waypoints = new Waypoint[nodes.Length - 1];
+            for (int i = 1; i < nodes.Length; i++)
+            {
+                var waypoint = nodes[i].GetComponent<Waypoint>();
+                if(waypoint is null) waypoint = nodes[i].gameObject.AddComponent<Waypoint>();
+                _waypoints[i - 1] = waypoint;
+                _waypoints[i - 1].DrawColor = lineColor;
+            }
+        }
+
         private void DrawLinearNodes()
         {
 
-            for(var i = 0; i < nodes.Count; i++) 
+            for(var i = 0; i < _waypoints.Length; i++) 
             {
-                var currentNode = nodes[i].position;
+                var currentNode = _waypoints[i].Position;
                 Vector3 previousNode;
                 Gizmos.color = lineColor;
                 if (i > 0)
                 {
-                    previousNode = nodes[i - 1].position; 
+                    previousNode = _waypoints[i - 1].Position; 
                     Gizmos.color = lineColor;
 
                     Gizmos.DrawLine(previousNode, currentNode);
-                    Handles.Label(new Vector3(currentNode.x  ,currentNode.y , currentNode.z+ 0.7f), nodes[i].name );
+                    Handles.Label(new Vector3(currentNode.x  ,currentNode.y , currentNode.z+ 0.7f), _waypoints[i].name );
                     
                 }
-                else if(i == 0 && nodes.Count > 1)
+                else if(i == 0 && _waypoints.Length > 1)
                 {
                     if (circuit)
                     {
                         Gizmos.color = lineColor;
 
-                        previousNode = nodes[nodes.Count - 1].position;
-                        Gizmos.DrawLine(previousNode, nodes[0].position); 
+                        previousNode = _waypoints[_waypoints.Length - 1].Position;
+                        Gizmos.DrawLine(previousNode, _waypoints[0].Position); 
                     }
 
 
@@ -158,43 +180,14 @@ namespace Navigation
             }
         }
         
-#endif                        
-
-        private void BuildWaypoints()
-        {
-            _waypoints = new Waypoint[nodes.Count];
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                var waypoint = nodes[i].GetComponent<Waypoint>();
-                 if(waypoint is null) waypoint = nodes[i].gameObject.AddComponent<Waypoint>();
-                _waypoints[i] = waypoint;
-                _waypoints[i].DrawColor = lineColor;
-            }
-        }
-
-        private void BuildNodeList()
-        {
-            Transform[] pathTransforms = GetComponentsInChildren<Transform>();
-            nodes = new List<Transform>();
-
-            for (var i = 1; i < pathTransforms.Length; i++)
-            {
-                var nodeTransform = pathTransforms[i];
-                if (nodeTransform != transform)
-                {
-                    nodes.Add(nodeTransform);
-                }
-            }
-        }
+#endif
         private void OnValidate()
         {
             RenameNodes();
-            BuildNodeList();
-            BuildWaypoints();        }
-
-        public List<Transform> GetAllNodes()
-        {
-            return nodes;
+            BuildWaypoints();
+            
         }
+        
+        
     }
 }

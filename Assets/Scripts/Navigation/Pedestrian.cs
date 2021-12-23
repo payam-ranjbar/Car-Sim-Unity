@@ -20,7 +20,7 @@ namespace Navigation
         private float MaxSpeed => !_iRunning ? profile.maxSpeed : profile.maxRunSpeed;
         private Vector3 _spawnPosition;
 
-        private Vector3 ChosenPoint => _path.GetPosition(currentNode);
+        private Vector3 ChosenPoint => _path[currentNode];
         [SerializeField] private Vector3 _choosenPoint;
         public Path _path ;
         [SerializeField]private float _intrepolationTime;
@@ -44,10 +44,10 @@ namespace Navigation
         
         private void FindStartNode()
         {
-            var nodes = _path.GetAllNodes();
+            var nodes = new Transform[]{};
             var position = transform.position;
             var minDistance = 10000f;
-            for (int i = 0; i < nodes.Count; i++)
+            for (int i = 0; i < nodes.Length; i++)
             {
                 var node = nodes[i];
                 var direction =  position - node.position;

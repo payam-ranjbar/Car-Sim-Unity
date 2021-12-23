@@ -32,8 +32,8 @@ namespace CarSystem
 
         private void Start()
         {
-            engine.Destination = path[startNode].position;
-            steerSensor.Destination = path[startNode].position;
+            engine.Destination = path[startNode];
+            steerSensor.Destination = path[startNode];
             engine.SetWheels(wheels);
             steerSensor.SetWheels(wheels);
             _colliderBuffers = new Collider[20];
@@ -98,7 +98,7 @@ namespace CarSystem
         private void CheckWayPointDistance()
         {
             var car = transform.position;
-            var node = path[_currectNode].position;
+            var node = path[_currectNode];
             var inRange =  car.InRangeFrom2D(node, detectionRadius);
             if (!inRange) return;
             
@@ -115,15 +115,15 @@ namespace CarSystem
         private void SelectNextNode()
         {
             _currectNode++;
-            engine.Destination = path[_currectNode].position;
-            steerSensor.Destination = path[_currectNode].position;
+            engine.Destination = path[_currectNode];
+            steerSensor.Destination = path[_currectNode];
         }
 
         private void EndOfPath()
         {
             var y = transform.position.y;
-            var pos1 = path[0].position.GetWithY(y);
-            var pos2 = path[1].position.GetWithY(y);
+            var pos1 = path[0].GetWithY(y);
+            var pos2 = path[1].GetWithY(y);
             var dir = pos2 - pos1;
             engine.StopCar();
             engine.ResetWheels();
