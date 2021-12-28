@@ -81,6 +81,9 @@ namespace CarSystem
             Gizmos.DrawLine(rightSensor.position  ,rightSensor.position  + dir * angleSensorLength);
             dir = Quaternion.AngleAxis(-sensorAngle, transform.up) * leftSensor.forward;
             Gizmos.DrawLine(leftSensor.position  ,leftSensor.position  + dir * angleSensorLength);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(middleSensor.position, _destination);
+
         }
 
         private RaycastHit _hit;
