@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using DG.Tweening.Plugins.Core.PathCore;
-using UnityEngine;
+﻿using UnityEngine;
 using Path = Navigation.Path;
 
 namespace CarSystem
