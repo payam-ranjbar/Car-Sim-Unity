@@ -108,13 +108,28 @@ namespace CarSystem
             
             if (_currectNode + 1 >= path.NodeCount)
             {
-                EndOfPath();
+                if (path.circuit)
+                {
+                    SelectEndNode();
+                }
+                else
+                {
+                    EndOfPath();
+
+                }
             }
             else
             {
                 TurnChecks();
                 SelectNextNode();
             }
+        }
+
+        private void SelectEndNode()
+        {
+            _currectNode = 0;
+            engine.Destination = path[_currectNode];
+            steerSensor.Destination = path[_currectNode];
         }
 
         private void SelectNextNode()

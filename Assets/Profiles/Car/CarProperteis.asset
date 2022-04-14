@@ -18,9 +18,9 @@ MonoBehaviour:
   speedLimitForBumps: 9
   maxSteerAngle: 80
   turnSpeed: 20
-  maxMotorTorque: 600
+  maxMotorTorque: 1000
   maxBrakeTorque: 1500
   currentSpeed: 60
-  maxSpeed: 120
-  timeBrake: 0.8
+  maxSpeed: 100
+  timeBrake: 1.2
   brakeTorque: 2000

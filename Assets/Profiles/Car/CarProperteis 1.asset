@@ -21,6 +21,6 @@ MonoBehaviour:
   maxMotorTorque: 1000
   maxBrakeTorque: 1500
   currentSpeed: 60
-  maxSpeed: 100.7
-  timeBrake: 1
+  maxSpeed: 100
+  timeBrake: 1.2
   brakeTorque: 2000

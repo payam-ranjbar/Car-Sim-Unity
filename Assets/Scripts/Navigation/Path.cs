@@ -156,8 +156,8 @@ namespace Navigation
         {
             var startPoint = _waypoints[start].Position;
             var endPoint = _waypoints[end].Position;
-            var handle1 = _waypoints[start].TangentOffset ;
-            var handle2 = _waypoints[end].TangentOffset ;
+            var handle1 = _waypoints[start].LowerTangentOffset ;
+            var handle2 = _waypoints[end].UpperTangentOffset ;
             
             var point = Mathf.Pow(1f-t,3f)*startPoint+3f*Mathf.Pow(1f-t,2f)*t*handle1+3f*(1f-t)*Mathf.Pow(t,2f)*handle2+Mathf.Pow(t,3f)*endPoint;
             return point;
@@ -167,7 +167,18 @@ namespace Navigation
         {
             for (var i = 0; i < _waypoints.Length; i++)
             {
-                if(i + 1 >= _waypoints.Length) continue;
+                if (i + 1 >= _waypoints.Length)
+                {
+                    if (circuit)
+                    {
+                        if(i < _waypoints.Length)
+                            DrawBezierCurveBetween(i, 0);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
                 
                 DrawBezierCurveBetween(i, i+1);
             }
@@ -175,10 +186,11 @@ namespace Navigation
 
         private void DrawBezierCurveBetween(int startPos, int endPos)
         {
+            if(startPos >= _waypoints.Length || endPos >= _waypoints.Length) return;
             var node = _waypoints[startPos].Position;
             var nextNode = _waypoints[endPos].Position;
-            var startTangent = _waypoints[startPos].TangentOffset;
-            var endTangent = _waypoints[startPos + 1].TangentOffset;
+            var startTangent = _waypoints[startPos].LowerTangentOffset;
+            var endTangent = _waypoints[endPos].UpperTangentOffset;
             Gizmos.color = lineColor;
             Handles.DrawBezier(node, nextNode, startTangent, endTangent
                 , lineColor, EditorGUIUtility.whiteTexture, 1f);
