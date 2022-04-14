@@ -91,6 +91,10 @@ namespace CarSystem
             }
         }
 
+        public void ShortBrake(float time)
+        {
+            StartCoroutine(TimeBrake(time));
+        }
         public void StopCar()
         {
             ResetTorque();
@@ -114,6 +118,13 @@ namespace CarSystem
             _isBraking = true;
 
             yield return new WaitForSeconds(engineProperties.timeBrake);
+            _isBraking = false;
+        }
+        private IEnumerator TimeBrake(float time)
+        {
+            _isBraking = true;
+
+            yield return new WaitForSeconds(time);
             _isBraking = false;
         }
 

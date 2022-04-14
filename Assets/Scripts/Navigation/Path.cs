@@ -23,7 +23,7 @@ namespace Navigation
         
         public Vector3 this[int index] => _bakedNodes[index];
 
-        private string baseNameOfNodes;
+       [SerializeField] private string baseNameOfNodes;
         [SerializeField] private bool useBezier;
 
         public int NodeCount => _bakedNodes.Length;
@@ -43,18 +43,68 @@ namespace Navigation
             }
         }
 
+        public Waypoint GetNearestWaypoint(int point)
+        {
+            var fractionOfLine = 100 / (int) bezierStep;
+
+            var index = Math.Abs( point / fractionOfLine);
+
+            if (index < _waypoints.Length) return _waypoints[index];
+            
+            return _waypoints[_waypoints.Length - 1];
+
+        }
+
+        public float GetTurnDotValue(Vector3 currentPos, int frontNode)
+        {
+            if (frontNode >= NodeCount - 1) return 0f;
+            
+            var node = _bakedNodes[frontNode];
+            var nextNode = _bakedNodes[frontNode + 1];
+
+            
+            var lookVector = node - currentPos;
+
+            var nodeVector = nextNode - node;
+
+            var dot = Vector3.Dot(lookVector, nodeVector);
+
+            return dot;
+        }
+        public float GetTurnAngle(Vector3 currentPos, int frontNode)
+        {
+            if (frontNode >= NodeCount - 1) return 0f;
+            
+            var node = _bakedNodes[frontNode];
+            var nextNode = _bakedNodes[frontNode + 1];
+
+            
+            var lookVector = node - currentPos;
+
+            var nodeVector = nextNode - node;
+
+            var angle = Vector3.Angle(lookVector, nodeVector);
+
+            return angle;
+
+        }
+
+
         [ContextMenu("Bake")]
         private void BuildBakedPositions()
         {
+            
             var list = new List<Vector3>();
             for (var index = 0; index < _waypoints.Length; index++)
             {
                 if(index + 1 >= _waypoints.Length) continue;
+                var startOfList = list.Count <= 0 ? 0 : list.Count - 1;
                 for (float t = 0f; t < 100f; t += bezierStep)
                 {
                     var point = GetBezierPointsBetween(index, index + 1, t/100f);
                     list.Add(point);
                 }
+                 
             }
 
             _bakedNodes = list.ToArray();

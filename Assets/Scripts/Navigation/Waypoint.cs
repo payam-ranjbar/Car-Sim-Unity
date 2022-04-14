@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -42,15 +43,12 @@ namespace Navigation
             if (!useWings) return transform.position;
             if (xAxis)
             {
-                var x = transform.position.x + Random.Range(-leftOffset, rightOffset);
-                recentPos = new Vector3(x, transform.localPosition.y, transform.position.z);
+                var x = transform.position.x + Random.Range(-LeftOffset, RightOffset);
                 return new Vector3(x, transform.localPosition.y, transform.position.z);
             }
             else
             {
-                var z = transform.position.z + Random.Range(-leftOffset, rightOffset);
-                recentPos =new Vector3(transform.position.x, transform.localPosition.y, z);
-
+                var z = transform.position.z + Random.Range(-LeftOffset, RightOffset);
                 return new Vector3(transform.position.x, transform.localPosition.y, z);
             }
         }

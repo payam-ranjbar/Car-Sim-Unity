@@ -48,6 +48,10 @@ namespace CarSystem
             engine.ShortBrake();
         }
 
+        private void ShortBrakeForTime(float time) => engine.ShortBrake(time);
+        
+        
+
         private void OnDisable()
         {
             steerSensor.onDetect -= ShortBrake;
@@ -61,12 +65,15 @@ namespace CarSystem
 
         private void Update()
         {
+            Autopilot();
+        }
 
+        private void Autopilot()
+        {
             CheckWayPointDistance();
             SensorLook();
             steerSensor.Steer();
             steerSensor.LerpToSteerAngle();
-
         }
 
         private void FixedUpdate()
@@ -105,6 +112,7 @@ namespace CarSystem
             }
             else
             {
+                TurnChecks();
                 SelectNextNode();
             }
         }
@@ -114,6 +122,19 @@ namespace CarSystem
             _currectNode++;
             engine.Destination = path[_currectNode];
             steerSensor.Destination = path[_currectNode];
+        }
+
+        private void TurnChecks()
+        {
+            var position = transform.position;
+            var angle = path.GetTurnAngle(position, _currectNode + 1);
+            var dot = path.GetTurnDotValue(position, _currectNode + 1);
+
+            if (angle >= engineProperties.maxSteerAngle - 10f)
+            {
+                var brakeTimeFactor = dot > 0 ? 1 - dot : 1;
+                ShortBrakeForTime(engineProperties.timeBrake * brakeTimeFactor);
+            }
         }
 
         private void EndOfPath()
