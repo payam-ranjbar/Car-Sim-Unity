@@ -98,5 +98,7 @@ public class PathFinder : MonoBehaviour
             var way = new GameObject();
             
         }
+
+        return null;
     }
 }
