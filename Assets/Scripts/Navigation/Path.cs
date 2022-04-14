@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Traffic;
 using UnityEditor;
@@ -12,6 +13,8 @@ namespace Navigation
         public Color lineColor;
         public bool circuit;
         public bool drawInScene;
+        [SerializeField] private bool usePathFinder;
+        [SerializeField] private PathFinder pathFinder;
         [Range(5f, 20f)] public float bezierStep = 10f;
 
         [SerializeField]  Waypoint[] _waypoints;
@@ -30,6 +33,14 @@ namespace Navigation
         {
             BuildWaypoints();
             BuildBakedPositions();
+        }
+
+        private void Start()
+        {
+            if (usePathFinder)
+            {
+                _waypoints = pathFinder.GetWaypoints();
+            }
         }
 
         [ContextMenu("Bake")]
@@ -54,7 +65,6 @@ namespace Navigation
         
         
 #if UNITY_EDITOR
-
         private void RenameNodes()
         {
             BuildWaypoints();
