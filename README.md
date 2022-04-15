@@ -6,24 +6,24 @@ Autopilot car system, physically based car engine behavior in unity engine
 </p>
 
 ------------------------
-####Recent development
+#### Recent development
 ##### Car system
 - Steering tuning on hard turns
 - Speed compensation for balancing on the waypoint
 - Tuning on waypoint bezier curve controlling on scene
 
-#####Demo Scene
+##### Demo Scene
 - Added a Two car chasing scene with a racing track
 - Upgraded to URP for more fidelity and shader creation control
 - Integrated with RiderFlow Editor tool
 -----------------------
-####Further development
+#### Further development
 - Enhancing Obstacle Avoidance Algorithm
 - Integrating Waypoint System with Unity's NavMesh System
 - Road Laws (intersections, traffic lights, etc.)
 
 ----------------------------
-####Unity Package Releases:
+#### Unity Package Releases:
 
 if you want only car system scripts drag and drop the unity package available for download on releases
 
