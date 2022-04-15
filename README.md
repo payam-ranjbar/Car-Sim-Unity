@@ -1,9 +1,8 @@
 # Car-Sim-Unity
 Autopilot car system, physically based car engine behavior in unity engine 
+    
+https://user-images.githubusercontent.com/24781440/163589070-4576c76d-5d34-44dc-bc56-0f0d5635ce06.mp4
 
-<p align="center">
-  <img src="https://github.com/payam-ranjbar/Car-Sim-Unity/blob/master/Demo.gif" alt="DEMO GIF"/>
-</p>
 
 ------------------------
 #### Recent development
