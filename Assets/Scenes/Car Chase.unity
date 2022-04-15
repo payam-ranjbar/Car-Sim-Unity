@@ -1731,7 +1731,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674503872}
-  m_LocalRotation: {x: 0.014757361, y: 0.7215224, z: -0.015385549, w: 0.6920629}
+  m_LocalRotation: {x: 0.014509614, y: 0.722818, z: -0.0151839, w: 0.69071925}
   m_LocalPosition: {x: -11.497551, y: 7.2739873, z: 46.94423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1977,6 +1977,18 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7515c1cf5f8b7124bbd402308d9337b1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f9dfe1a96b96df4abdf26d922291aa1, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 7515c1cf5f8b7124bbd402308d9337b1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 731d85673daad2c45aab9e516bbc9b37, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 7515c1cf5f8b7124bbd402308d9337b1, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc3bfd2a200002a47aa2f7a596ab7244, type: 2}
     - target: {fileID: 919132149155446097, guid: 7515c1cf5f8b7124bbd402308d9337b1, type: 3}
       propertyPath: m_Name
       value: roadStraightLongBump
@@ -4890,7 +4902,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 338832d552b5aae44b2d6a42c34e5b3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5202,7 +5214,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771899620}
-  m_LocalRotation: {x: 0.097975396, y: 0.4007131, z: -0.04314632, w: 0.90992755}
+  m_LocalRotation: {x: 0.106961004, y: 0.38926023, z: -0.045565147, w: 0.91376126}
   m_LocalPosition: {x: -24.9, y: 29.3, z: -14.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
