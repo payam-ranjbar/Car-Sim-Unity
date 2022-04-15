@@ -16,7 +16,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speedLimitForBumps: 9
-  maxSteerAngle: 55
+  maxSteerAngle: 67
   turnSpeed: 20
   maxMotorTorque: 2000
   maxBrakeTorque: 2000
