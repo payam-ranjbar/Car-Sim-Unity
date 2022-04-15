@@ -55,7 +55,7 @@ namespace Navigation
 
         }
 
-        public float GetTurnDotValue(Vector3 currentPos, int frontNode)
+        public float GetTurnDotValue(Vector3 currentPos, int frontNode, float speed = 1f)
         {
             if (frontNode >= NodeCount - 1) return 0f;
             
@@ -67,7 +67,7 @@ namespace Navigation
 
             var nodeVector = nextNode - node;
 
-            var dot = Vector3.Dot(lookVector, nodeVector);
+            var dot = Vector3.Dot(speed * lookVector.normalized, nodeVector.normalized);
 
             return dot;
         }

@@ -227,7 +227,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3818
+  m_Name: pb_Mesh19388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -516,7 +516,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142785714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.03, y: -0.176, z: 36.49}
+  m_LocalPosition: {x: 43.13, y: -0.176, z: 34.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058194723}
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightOffset: 0
   leftOffset: 0
-  upperTangentOffset: {x: 0.98586273, y: -0.21000004, z: 15.80558}
+  upperTangentOffset: {x: -4.9817657, y: -0.21000004, z: 15.80558}
   lowerTangentOffset: {x: 0, y: 0, z: 0}
   useWings: 0
   xAxis: 1
@@ -1552,7 +1552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591467137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.790001, y: -5.6048584, z: -1.1929103}
+  m_LocalPosition: {x: 4.57, y: -5.6048584, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1497151543}
@@ -2881,7 +2881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineColor: {r: 0.8301887, g: 0.23025987, b: 0.23025987, a: 0.9529412}
   circuit: 1
-  drawInScene: 0
+  drawInScene: 1
   usePathFinder: 0
   pathFinder: {fileID: 0}
   bezierStep: 5
@@ -4158,7 +4158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1497151543
 Transform:
   m_ObjectHideFlags: 0
@@ -4192,6 +4192,7 @@ MonoBehaviour:
   node: {fileID: 1604370938}
   nextNode: {fileID: 2040242258}
   angleThreshold: 40
+  velocity: 60
 --- !u!1001 &1505944170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4643,7 +4644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604370937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7400055, y: -5.6048584, z: 0}
+  m_LocalPosition: {x: 4.7400055, y: -4.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1497151543}
@@ -5201,7 +5202,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771899620}
-  m_LocalRotation: {x: 0.0979754, y: 0.40071315, z: -0.04314633, w: 0.9099276}
+  m_LocalRotation: {x: 0.097975396, y: 0.4007131, z: -0.04314632, w: 0.90992755}
   m_LocalPosition: {x: -24.9, y: 29.3, z: -14.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6183,7 +6184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040242257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.5699997, y: -5.6048584, z: 1.0670898}
+  m_LocalPosition: {x: 5, y: -1.33, z: -0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1497151543}
@@ -7225,7 +7226,7 @@ MonoBehaviour:
   sensorAngle: 15.6
   middleSensorOffset: 1.16
   drawDebug: 1
-  avoidObstacles: 0
+  avoidObstacles: 1
 --- !u!114 &5872994333347751097
 MonoBehaviour:
   m_ObjectHideFlags: 0

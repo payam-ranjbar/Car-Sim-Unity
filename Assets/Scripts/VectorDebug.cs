@@ -15,6 +15,8 @@ public class VectorDebug : MonoBehaviour
 
     [Range(0f, 360f)]
     [SerializeField] private float angleThreshold = 40f;
+    [Range(0f, 360f)]
+    [SerializeField] private float velocity = 40f;
     private void OnDrawGizmos()
     {
         var carPos = car.position;
@@ -42,9 +44,12 @@ public class VectorDebug : MonoBehaviour
 
         var angle = Vector3.Angle(lookVector, nodeVector);
 
+        var dot = Vector3.Dot(velocity * lookVector.normalized, nodeVector.normalized);
         Handles.color = angle >= angleThreshold ? Color.red : Color.green;
-        Handles.Label(carPos + Vector3.right, $" angle : {angle.ToString(CultureInfo.InvariantCulture)}");
-        Handles.Label(carPos + Vector3.left, $" dot : {Vector3.Dot(lookVector.normalized, nodeVector.normalized)}");
+        var style = new GUIStyle();
+        style.fontSize = 20;
+        Handles.Label(carPos + Vector3.right, $" angle : {angle}", style);
+        Handles.Label(carPos + Vector3.left, $" dot : {dot}", style);
 
     }
     

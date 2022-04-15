@@ -58,6 +58,8 @@ namespace CarSystem
 
         private void OnGUI()
         {
+            if(!drawDebug) return;
+            
             var style = new GUIStyle();
             style.fontSize = 20;
             

@@ -99,6 +99,10 @@ namespace CarSystem
         }
 
 
+        private void CheckWaypointPassed()
+        {
+            
+        }
         private void CheckWayPointDistance()
         {
             var car = transform.position;
@@ -143,13 +147,15 @@ namespace CarSystem
         {
             var position = transform.position;
             var angle = path.GetTurnAngle(position, _currectNode + 1);
-            var dot = path.GetTurnDotValue(position, _currectNode + 1);
+            var dot = path.GetTurnDotValue(position, _currectNode + 1, engine.CurrentSpeed);
 
-            if (angle >= engineProperties.maxSteerAngle - 10f)
-            {
-                var brakeTimeFactor = dot > 0 ? 1 - dot : 1;
-                ShortBrakeForTime(engineProperties.timeBrake * brakeTimeFactor);
-            }
+            engine.BrakeToSpeed(dot);
+            // if (angle >= engineProperties.maxSteerAngle - 10f)
+            // {
+            //     var brakeTimeFactor = dot > 0 ? 1 - dot : 1;
+            //     ShortBrakeForTime(engineProperties.timeBrake * brakeTimeFactor);
+            //     
+            // }
         }
 
         private void EndOfPath()
