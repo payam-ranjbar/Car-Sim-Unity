@@ -39,7 +39,8 @@ namespace Navigation
         {
             if (usePathFinder)
             {
-                _waypoints = pathFinder.GetWaypoints();
+                //TODO : integrated with Unity's NavMesh system
+                // _waypoints = pathFinder.GetWaypoints();
             }
         }
 
