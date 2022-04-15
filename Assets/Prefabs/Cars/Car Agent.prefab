@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105e3316feb448144b52e8aa0c9cc260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engineProperties: {fileID: 11400000, guid: 85304525aaa70514ab9d28de049b4516, type: 2}
+  engineProperties: {fileID: 11400000, guid: 4b2c043c8f42e9e4e92daf78beb64152, type: 2}
   centerOfMass: {x: 0, y: 0, z: 0}
 --- !u!114 &5969367863809170874
 MonoBehaviour:
@@ -434,11 +434,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0508e9cc268a42e0ab0db93d13a0ff45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engineProperties: {fileID: 11400000, guid: 85304525aaa70514ab9d28de049b4516, type: 2}
+  engineProperties: {fileID: 11400000, guid: 4b2c043c8f42e9e4e92daf78beb64152, type: 2}
   middleSensor: {fileID: 5969367863184849499}
   leftSensor: {fileID: 5969367862779759993}
   rightSensor: {fileID: 5969367863602189047}
   sensorLength: 11.4
+  sensorCenterLength: 0
+  angleSensorLength: 0
   sensorAngle: 15.6
   middleSensorOffset: 1.16
   drawDebug: 1
@@ -471,6 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5adde3f9f9f9427d8696af95c2e2b9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engineProperties: {fileID: 11400000, guid: 4b2c043c8f42e9e4e92daf78beb64152, type: 2}
   steerSensor: {fileID: 5969367863809170874}
   engine: {fileID: 5969367863809170875}
   carSkin:
@@ -487,14 +490,11 @@ MonoBehaviour:
   path: {fileID: 0}
   startNode: 0
   detectionRadius: 10.72
-  center: {x: -0.59, y: 1.75, z: -9.34}
-  center2: {x: 0, y: 0, z: 0}
-  capRadius: 25.06
+  centerOfShpere: {x: 0, y: 0, z: 0}
+  shpereRadius: 1
   mask:
     serializedVersion: 2
     m_Bits: 64
-  howManyFrames: 1
-  useCast: 0
 --- !u!65 &5969367863809170879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -651,32 +651,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7626630938287245856, guid: b51f3dfca0bbccb479df3a14c170726a, type: 3}
   m_PrefabInstance: {fileID: 5969367863522321059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5969367862908316409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564824951206664390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47d4078bd7bada408a0debd1a38a073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetWheel: {fileID: 5969367863488391277}
---- !u!114 &5969367863140183995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8257154878257017502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47d4078bd7bada408a0debd1a38a073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetWheel: {fileID: 5969367864037013113}
 --- !u!114 &5969367863141868391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +664,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetWheel: {fileID: 5969367862681601090}
+--- !u!114 &5969367862908316409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4564824951206664390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47d4078bd7bada408a0debd1a38a073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 5969367863488391277}
 --- !u!114 &5969367863558245057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,3 +690,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetWheel: {fileID: 5969367862380974459}
+--- !u!114 &5969367863140183995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257154878257017502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47d4078bd7bada408a0debd1a38a073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 5969367864037013113}
