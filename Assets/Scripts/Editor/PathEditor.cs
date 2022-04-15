@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Algorithms;
 using CarAI;
 using Navigation;
 using Traffic;
@@ -25,11 +27,27 @@ namespace CarEditor
             {
                     
                 RotateNodes();
+            }                
+            if (GUILayout.Button("Print Scan"))
+            {
+                    
+                GrahamScanPoints();
             }
                 
                 
         }
 
+        private void GrahamScanPoints()
+        {
+            var t = target as Path;
+            var list = new List<Vector3>();
+            foreach (var waypoint in t.Waypoints)
+            {
+                list.Add(waypoint.transform.localPosition );
+            }
+
+            var scan = new GrahamScan(list.ToArray());
+        }
         private void RotateNodes()
         {
             var t = target as Path;

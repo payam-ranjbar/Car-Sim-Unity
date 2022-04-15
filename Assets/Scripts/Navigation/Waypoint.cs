@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,8 @@ namespace Navigation
         [SerializeField] [Range(0f, 2f)] private float leftOffset;
 
         
-        [SerializeField] private Vector3 tangentOffset;
+        [SerializeField] private Vector3 upperTangentOffset;
+        [SerializeField] private Vector3 lowerTangentOffset;
         [SerializeField] private bool useWings;
         
         
@@ -19,10 +21,16 @@ namespace Navigation
 
         public float LeftOffset => leftOffset;
 
-        public Vector3 TangentOffset
+        public Vector3 UpperTangentOffset
         {
-            get => tangentOffset + transform.position;
-            set => tangentOffset = value;
+            get => upperTangentOffset + transform.position;
+            set => upperTangentOffset = value;
+        }
+
+        public Vector3 LowerTangentOffset
+        {
+            get => lowerTangentOffset + transform.position;
+            set => lowerTangentOffset = value;
         }
 
         private Vector3 recentPos;
@@ -42,15 +50,12 @@ namespace Navigation
             if (!useWings) return transform.position;
             if (xAxis)
             {
-                var x = transform.position.x + Random.Range(-leftOffset, rightOffset);
-                recentPos = new Vector3(x, transform.localPosition.y, transform.position.z);
+                var x = transform.position.x + Random.Range(-LeftOffset, RightOffset);
                 return new Vector3(x, transform.localPosition.y, transform.position.z);
             }
             else
             {
-                var z = transform.position.z + Random.Range(-leftOffset, rightOffset);
-                recentPos =new Vector3(transform.position.x, transform.localPosition.y, z);
-
+                var z = transform.position.z + Random.Range(-LeftOffset, RightOffset);
                 return new Vector3(transform.position.x, transform.localPosition.y, z);
             }
         }
@@ -61,9 +66,12 @@ namespace Navigation
             Gizmos.DrawSphere(transform.position, 0.1f);
             
             Gizmos.color = Color.yellow;
-            
-            Gizmos.DrawSphere(TangentOffset, 0.1f);
-            Gizmos.DrawLine(transform.position, TangentOffset);
+            Gizmos.DrawSphere(UpperTangentOffset, 0.1f);
+            Gizmos.DrawLine(transform.position, UpperTangentOffset);
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawSphere(LowerTangentOffset, 0.1f);
+            Gizmos.DrawLine(transform.position, LowerTangentOffset);
 
             if (useWings)
             {

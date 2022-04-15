@@ -11,10 +11,12 @@ namespace Editor
         {
             var t = target as Waypoint;
             EditorGUI.BeginChangeCheck();
-            var pos = Handles.DoPositionHandle(t.TangentOffset, Quaternion.identity);
+            var pos = Handles.DoPositionHandle(t.UpperTangentOffset, Quaternion.identity);
+            var pos2 = Handles.DoPositionHandle(t.LowerTangentOffset, Quaternion.identity);
             if (EditorGUI.EndChangeCheck())
             {
-                t.TangentOffset = pos - t.transform.position;
+                t.UpperTangentOffset = pos - t.transform.position;
+                t.LowerTangentOffset = pos2 - t.transform.position;
 
             }
             

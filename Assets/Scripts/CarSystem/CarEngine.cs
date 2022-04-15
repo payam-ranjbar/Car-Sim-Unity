@@ -24,6 +24,8 @@ namespace CarSystem
 
         private Vector3 _destination;
 
+        public float CurrentSpeed => _currentSpeed;
+
         public Vector3 Destination
         {
             get => _destination;
@@ -49,7 +51,7 @@ namespace CarSystem
         {
             CalculateSpeed();
 
-            if (_currentSpeed < engineProperties.maxSpeed && !_isBraking)
+            if (_currentSpeed <= engineProperties.maxSpeed && !_isBraking)
             {
                 _wheels.SetTorque(engineProperties.maxMotorTorque, WheelPosition.FL, WheelPosition.FR);
 
@@ -91,6 +93,28 @@ namespace CarSystem
             }
         }
 
+        public void ShortBrake(float time)
+        {
+            StartCoroutine(TimeBrake(time));
+        }
+
+        private IEnumerator BrakeToCompensateSpeedTo(float speed)
+        {
+            if(_isBraking) yield break;
+
+            speed = Mathf.Abs(speed ) ;
+            
+            if (_currentSpeed <= speed) yield break;
+
+
+            _isBraking = true;
+            
+            yield return new WaitUntil(() => _currentSpeed <= speed + engineProperties.minSpeedOnTurn);
+            
+            _isBraking = false;
+        }
+
+        public void BrakeToSpeed(float speed) => StartCoroutine(BrakeToCompensateSpeedTo(speed));
         public void StopCar()
         {
             ResetTorque();
@@ -114,6 +138,13 @@ namespace CarSystem
             _isBraking = true;
 
             yield return new WaitForSeconds(engineProperties.timeBrake);
+            _isBraking = false;
+        }
+        private IEnumerator TimeBrake(float time)
+        {
+            _isBraking = true;
+
+            yield return new WaitForSeconds(time);
             _isBraking = false;
         }
 
